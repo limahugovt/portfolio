@@ -9,9 +9,36 @@ import {
   RiTerminalBoxFill,
 } from "@remixicon/react";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import fs from "fs";
+import path from "path";
 
-export default function AboutMe() {
+export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), "conteudo.txt");
+  const fileContents = fs.readFileSync(filePath, "utf8");
+
+  return {
+    props: {
+      markdownContent: fileContents,
+    },
+  };
+}
+
+export default function AboutMe({
+  markdownContent,
+}: {
+  markdownContent: string;
+}) {
   const [isShowFolders, setIsShowFolders] = useState(true);
+  const [openFile, setOpenFile] = useState<string | null>(null);
+
+  const handleFileClick = (file: string) => {
+    setOpenFile(file);
+  };
+
+  const handleCloseFile = () => {
+    setOpenFile(null);
+  };
 
   return (
     <TemplateDefault>
@@ -45,40 +72,51 @@ export default function AboutMe() {
                   name="biografia"
                   files={["teste"]}
                   classNameFolder="text-rose-400"
+                  onFileClick={handleFileClick}
                 />
                 <Folder
                   name="outra-pasta"
                   files={["arquivo1", "arquivo2"]}
                   classNameFolder="text-teal-400"
+                  onFileClick={handleFileClick}
                 />
                 <Folder
                   name="outra-pasta"
                   files={["arquivo1", "arquivo2"]}
                   classNameFolder="text-teal-400"
+                  onFileClick={handleFileClick}
                 />
               </div>
             )}
           </div>
           <div className="flex flex-col w-[calc(100%-313px)]">
-            <div className="h-[49px] border-b border-slate-700 flex">
-              <div className="flex gap-1 w-60 h-full px-6 items-center border-r border-slate-700">
-                <p className="w-full text-slate-400">arquivo1</p>
-                <RiCloseFill
-                  size={16}
-                  className="fill-slate-400 cursor-pointer"
-                />
-              </div>
-              <div className="flex gap-1 w-60 h-full px-6 items-center border-r border-slate-700">
-                <p className="w-full text-slate-400">arquivo1</p>
-                <RiCloseFill
-                  size={16}
-                  className="fill-slate-400 cursor-pointer"
-                />
-              </div>
-            </div>
-            <div className="px-10 py-3">
-              <p>oi</p>
-            </div>
+            {openFile && (
+              <>
+                <div className="h-[49px] border-b border-slate-700 flex">
+                  <div className="flex gap-1 w-60 h-full px-6 items-center border-r border-slate-700">
+                    <p className="w-full text-slate-400">{openFile}</p>
+                    <RiCloseFill
+                      size={16}
+                      className="fill-slate-400 cursor-pointer"
+                      onClick={handleCloseFile}
+                    />
+                  </div>
+                </div>
+                <div className="flex px-10 py-3 gap-10 h-full w-[676px]">
+                  <div className=" text-slate-400 ">
+                    {Array.from(
+                      { length: markdownContent.split("\n").length },
+                      (_, i) => (
+                        <p key={i}>{i + 1}</p>
+                      )
+                    )}
+                  </div>
+                  <div className="">
+                    <ReactMarkdown>{markdownContent}</ReactMarkdown>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>

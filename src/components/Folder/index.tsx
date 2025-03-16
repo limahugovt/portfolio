@@ -9,9 +9,15 @@ interface FolderProps {
   name: string;
   files: string[];
   classNameFolder: string;
+  onFileClick: (file: string) => void;
 }
 
-export default function Folder({ name, files, classNameFolder }: FolderProps) {
+export default function Folder({
+  name,
+  files,
+  classNameFolder,
+  onFileClick,
+}: FolderProps) {
   const [isFolderOpened, setIsFolderOpened] = useState(false);
 
   return (
@@ -41,6 +47,7 @@ export default function Folder({ name, files, classNameFolder }: FolderProps) {
             <div
               key={index}
               className="flex items-center gap-3 h-6 cursor-pointer"
+              onClick={() => onFileClick(file)}
             >
               <RiMarkdownFill className="text-slate-500" size={16} />
               <p className="text-slate-400">{file}</p>
