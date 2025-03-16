@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Header from "../components/Header";
 import BlurredBackground from "../components/BlurredBackground";
 import Footer from "../components/Footer";
+import OpacityImage from "../components/OpacityImage";
 
 export default function Home() {
   const githubLink = "https://github.com/limahugovt";
@@ -62,41 +62,17 @@ export default function Home() {
               top="0px"
               left="-100px"
             />
-            <Image
-              src="code-snippet 2.svg"
-              alt=""
-              width={560}
-              height={182}
-              className="opacity-20"
-            />
-            <Image
-              src="code-snippet 2.svg"
-              alt=""
-              width={560}
-              height={182}
-              className="opacity-90"
-            />
-            <Image
-              src="code-snippet 2.svg"
-              alt=""
-              width={560}
-              height={182}
-              className="z-10"
-            />
-            <Image
-              src="code-snippet 2.svg"
-              alt=""
-              width={560}
-              height={182}
-              className="opacity-90"
-            />
-            <Image
-              src="code-snippet 2.svg"
-              alt=""
-              width={560}
-              height={182}
-              className="opacity-20"
-            />
+            {[20, 90, 100, 90, 20].map((opacity, index) => (
+              <OpacityImage
+                key={index}
+                src="code-snippet 2.svg"
+                alt=""
+                width={560}
+                height={182}
+                opacity={opacity}
+                className={opacity === 100 ? "z-10" : ""}
+              />
+            ))}
             <BlurredBackground
               width="454px"
               height="492px"
