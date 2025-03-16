@@ -3,6 +3,6 @@ import HeaderDesktop from "../HeaderDesktop";
 import HeaderMobile from "../HeaderMobile";
 
 export default function Header() {
-  const width = useGetWidth();
+  const width = useGetWidth() ?? 0;
   return width > 899 ? <HeaderDesktop /> : <HeaderMobile />;
 }
