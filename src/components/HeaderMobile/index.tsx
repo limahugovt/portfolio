@@ -6,8 +6,12 @@ export default function HeaderMobile() {
   const [isOpened, setIsOpened] = useState(false);
 
   return (
-    <header className="w-full h-[56px] border-b border-slate-700 flex text-base text-slate-400 flex-col">
-      <div className="flex w-full justify-between items-center">
+    <header
+      className={`w-full ${
+        isOpened ? "h-full" : "h-[56px]"
+      } border-b border-slate-700 flex text-base text-slate-400 flex-col`}
+    >
+      <div className="flex w-full justify-between items-center h-[56px]">
         <div className="w-full px-6 py-4">
           <p>victor-hugo</p>
         </div>
