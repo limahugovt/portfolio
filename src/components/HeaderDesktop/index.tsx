@@ -13,7 +13,7 @@ export default function HeaderDesktop() {
           <ul className="flex h-full">
             <NavItem href="/" label="_home" isActived={router.asPath === "/"} />
             <NavItem
-              href="/sobre-mim#informacoes-pessoais"
+              href="/sobre-mim/informacoes-pessoais"
               label="_sobre-mim"
               isActived={router.asPath.includes("sobre-mim")}
             />

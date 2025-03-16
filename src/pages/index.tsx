@@ -36,9 +36,6 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col gap-1">
-            <p className="text-slate-400 text-lg/6 hidden lg:block">
-              {"//"} complete o jogo para continuar
-            </p>
             <p className="text-slate-400 text-sm lg:text-lg/6">
               {"//"} encontre meu perfil no Github:
             </p>
