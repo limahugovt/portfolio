@@ -6,6 +6,7 @@ interface BlurredBackgroundProps {
   left?: string;
   bottom?: string;
   right?: string;
+  className?: string;
 }
 
 export default function BlurredBackground({
@@ -16,9 +17,11 @@ export default function BlurredBackground({
   left,
   bottom,
   right,
+  className,
 }: BlurredBackgroundProps) {
   return (
     <div
+      className={className}
       style={{
         filter: "blur(80px)",
         position: "absolute",

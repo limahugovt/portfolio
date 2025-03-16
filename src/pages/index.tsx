@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Header from "../components/Header";
 import BlurredBackground from "../components/BlurredBackground";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const githubLink = "https://github.com/limahugovt";
@@ -8,8 +9,24 @@ export default function Home() {
     <div className="w-full h-screen sm:p-[70px] p-4">
       <div className="bg-slate-900 w-full h-full rounded-lg border border-slate-700">
         <Header />
-        <section className="w-full h-[calc(100%-56px)] flex justify-center items-center gap-5 2xl:gap-[143px] overflow-hidden px-6 lg:px-0">
-          <div className="gap-[75px] flex flex-col w-max lg:w-[541px]">
+        <section className="w-full h-[calc(100%-112px)] flex justify-center items-center gap-5 2xl:gap-[143px] overflow-hidden px-6 lg:px-0">
+          <BlurredBackground
+            width="254px"
+            height="292px"
+            background="#00D5BE"
+            top="180px"
+            left="17px"
+            className="lg:hidden"
+          />
+          <BlurredBackground
+            width="254px"
+            height="292px"
+            background="#615FFF"
+            bottom="180px"
+            right="17px"
+            className="lg:hidden"
+          />
+          <div className="gap-[75px] flex flex-col w-max lg:w-[541px] z-10">
             <div>
               <p className="text-lg/7 text-slate-400 ">Olá a todos. Eu sou</p>
               <div>
@@ -89,6 +106,7 @@ export default function Home() {
             />
           </div>
         </section>
+        <Footer />
       </div>
     </div>
   );
