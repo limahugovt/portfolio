@@ -1,6 +1,7 @@
 import { RiCloseFill, RiMenuLine } from "@remixicon/react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function HeaderMobile() {
   const [isOpened, setIsOpened] = useState(false);
@@ -42,16 +43,16 @@ export default function HeaderMobile() {
               <nav className="text-slate-50">
                 <ul>
                   <li className="border-b border-t px-6 py-4 border-slate-700 w-full">
-                    <a href="#">_home</a>
+                    <Link href="/">_home</Link>
                   </li>
                   <li className="border-b border-t px-6 py-4 border-slate-700 w-full">
-                    <a href="#">_sobre-mim</a>
+                    <Link href="/sobre-mim">_sobre-mim</Link>
                   </li>
                   <li className="border-b border-t px-6 py-4 border-slate-700 w-full">
-                    <a href="#">_projetos</a>
+                    <Link href="#">_projetos</Link>
                   </li>
                   <li className="border-b border-t px-6 py-4 border-slate-700 w-full">
-                    <a href="#">_contato</a>
+                    <Link href="#">_contato</Link>
                   </li>
                 </ul>
               </nav>

@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="h-[56px] w-full flex justify-between items-center border-t border-slate-700 text-slate-400">
       <div className="flex h-full items-center">
-        <div className="px-2 lg:px-6 text-sm lg:text-base">
-          <p>me encontre em:</p>
+        <div className="px-2 lg:px-[26.5px] text-sm lg:text-base">
+          <p>me encontre no:</p>
         </div>
         <a
           href="#"
